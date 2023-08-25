@@ -1,0 +1,64 @@
+@import 'base';
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: #000000;
+}
+
+.neon{
+    background: #000;
+    font-size: 10rem;
+    padding: 1rem 2rem;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    filter: brightness(200%);
+    span{
+        position: relative;
+        user-select: none;
+        &:before{
+            content: attr(data-text);
+            position: absolute;
+            filter: blur(.125rem);
+            mix-blend-mode: difference;
+        }
+    }
+    .gradient{
+        position: absolute;
+        background: 
+        linear-gradient(
+            45deg, 
+            rgb(219, 131, 0), 
+            rgb(202, 172, 0), 
+            rgb(255, 0, 76), 
+            rgb(0, 255, 255), 
+            rgb(221, 199, 0));
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        mix-blend-mode: multiply;
+    }
+    @keyframes light {
+        to {
+            transform: translate(50%, 50%);
+        }
+    }
+    .lights{
+        position: absolute;
+        top: -100%;
+        left: -100%;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle, white, transparent 25%) center/25% 25%,
+            radial-gradient(circle, white, black 25%) center/12.5% 12.5%;
+        animation: light 5s linear infinite;
+        mix-blend-mode: color-dodge;
+    }
+}
